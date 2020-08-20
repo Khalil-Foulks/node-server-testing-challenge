@@ -5,6 +5,8 @@ module.exports = {
     find,
     findBy,
     findById,
+    remove,
+    update,
 }
 
 function find(){
@@ -30,9 +32,22 @@ async function add(animal){
     .then(ids => {
         const id = ids[0]
         return findById(id)
-    })
+    });
 }
 
 function findById(id){
-    return db("animals").where({ id }).first()
+    return db("animals").where({ id }).first();
+}
+
+function remove(id){
+    return db("animals").where({ id }).del();
+}
+
+function update(changes, id){
+    return db("animals")
+    .where({ id })
+    .update(changes)
+    .then(() => {
+        return findById(id)
+    });
 }
