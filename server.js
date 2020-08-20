@@ -1,7 +1,7 @@
 const express = require('express');
 
 //Router import here
-// const AnimalsRouter = require('./animals.js/animalsRouter');
+const AnimalsRouter = require('./animals/animalsRouter');
 
 //Global Middleware here
 const server = express();
@@ -13,6 +13,6 @@ res.send(`<h2> Node Testing Project is UP! </h2>`)
 
 })
 
-// server.use('/api/animals', AnimalsRouter);
+server.use('/api/animals', AnimalsRouter);
 
 module.exports = server;
